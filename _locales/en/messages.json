@@ -1,0 +1,206 @@
+{
+    "WizNote": {
+        "message": "WizNote Web Clipper"
+    },
+    "Completed": {
+        "message": "Completed"
+    },
+    "DeletedItems": {
+        "message": "Deleted Items"
+    },
+    "Inbox": {
+        "message": "Inbox"
+    },
+    "MyContacts": {
+        "message": "My Contacts"
+    },
+    "MyDrafts": {
+        "message": "My Drafts"
+    },
+    "MyEmails": {
+        "message": "My Emails"
+    },
+    "MyEvents": {
+        "message": "My Events"
+    },
+    "MyJournals": {
+        "message": "My Journals"
+    },
+    "MyMobiles": {
+        "message": "My Mobiles"
+    },
+    "MyNotes": {
+        "message": "My Notes"
+    },
+    "MyPhotos": {
+        "message": "My Photos"
+    },
+    "MyStickyNotes": {
+        "message": "My Sticky Notes"
+    },
+    "MyTasks": {
+        "message": "My Tasks"
+    },
+    "actionName": {
+        "message": "WizNote Web Clipper"
+    },
+    "add_comment": {
+        "message": "Add Remark"
+    },
+    "add_tag": {
+        "message": "Add tag"
+    },
+    "article_save": {
+        "message": "Save Article"
+    },
+    "category_loading": {
+        "message": "Loading category, Please wait"
+    },
+    "category_tip": {
+        "message": "Folder : "
+    },
+    "refresh": {
+        "message": "Refresh"
+    },
+    "clipResult_clipping": {
+        "message": "Clipping..."
+    },
+    "clipResult_error": {
+        "message": "Save failed"
+    },
+    "clipResult_success": {
+        "message": "Clipped successfully"
+    },
+    "clipResult_sync": {
+        "message": "Syncing"
+    },
+    "clipResult_webclient": {
+        "message": "View it in WizNote Web Client"
+    },
+    "comment_tip": {
+        "message": "Remark: "
+    },
+    "contentPreview_clipArticle": {
+        "message": "Clip article"
+    },
+    "contentPreview_expandSelection": {
+        "message": "Expand selection"
+    },
+    "contentPreview_moveSelection": {
+        "message": "Move selection"
+    },
+    "contentPreview_shrinkSelection": {
+        "message": "Shrink selection"
+    },
+    "contextMenus_clipPage": {
+        "message": "Save to WizNote"
+    },
+    "contextMenus_clipSelection": {
+        "message": "Clip Selection"
+    },
+    "contextMenus_clipUrl": {
+        "message": "Clip URL"
+    },
+    "create_account_link": {
+        "message": "Create WizNote Account"
+    },
+    "description": {
+        "message": "Use the WizNote extension to save things you see on the web into your WizNote account."
+    },
+    "extName": {
+        "message": "WizNote Web Clipper"
+    },
+    "fullpage_save": {
+        "message": "Save Full Page"
+    },
+    "install_client_notify": {
+        "message": "This feature need to install the latest version of WizNote client, or the Plugin is always enabled. Click \"OK\" to get help."
+    },
+    "keep_password_tip": {
+        "message": "Stay signed in"
+    },
+    "login_msg": {
+        "message": "Sign in"
+    },
+    "logining": {
+        "message": "Logining"
+    },
+    "note_login": {
+        "message": "Please click the WizNote Web Clipper icon to login!"
+    },
+    "logout": {
+        "message": "Sign out"
+    },
+    "network_wrong": {
+        "message": "Network is not available. Please try again after checking"
+    },
+    "note_title_tip": {
+        "message": "Title: "
+    },
+    "pageClipFailure": {
+        "message": "The Clipper couldn't start on this page. Reload the page and try again."
+    },
+    "password_error": {
+        "message": "Invalid Password"
+    },
+    "password_tip": {
+        "message": "Password: "
+    },
+    "popup_wating": {
+        "message": "Waiting page..."
+    },
+    "retry_clip_button": {
+        "message": "Retry"
+    },
+    "save_more": {
+        "message": "More"
+    },
+    "save_to_server": {
+        "message": "Save to Server"
+    },
+    "select_save": {
+        "message": "Save Selected"
+    },
+    "tag_input": {
+        "message": "Add tag, separated by commas"
+    },
+    "tag_tip": {
+        "message": "Tags: "
+    },
+    "url_save": {
+        "message": "Save URL"
+    },
+    "user_id_help": {
+        "message": "(email or mobile)"
+    },
+    "user_id_tip": {
+        "message": "Account: "
+    },
+    "userid_error": {
+        "message": "Invalid user name"
+    },
+    "options": {
+        "message": "Options"
+    },
+    "options_title":  {
+        "message": "WizNote Web Clipper Options"
+    },
+    "save_image_to_server_fail": {
+        "message": "Source file are oversize, the pictures will be saved by links"
+    },
+    "about": {
+        "message":  "About"
+    },
+    "protocol": {
+        "message": "网络协议"
+    },
+    "protocol_tip": {
+        "message": ""
+    },
+    "err_301": {
+        "message": "Invalid user name or password"
+    },
+    "err_314": {
+        "message": "User does not exist"
+    }
+}

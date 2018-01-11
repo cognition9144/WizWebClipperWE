@@ -1,0 +1,350 @@
+html, body, input, label, select, option, textarea, button, fieldset, legend {
+    font-family: "Microsoft Yahei", "微软雅黑", "Helvetica", "SimHei", "SimSun", sans-serif;
+    font-size: 14px;
+}
+
+input, textarea, select, button {
+    margin: 0;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: -webkit-auto;
+}
+
+/*隐藏聚焦时显示的黄色边框*/
+input, button, select, textarea, ul, li {
+    outline: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body.popup {
+    background-color: #f6f7f8;
+    min-width: 100px;
+    padding-bottom: 8px;
+    margin: 5px;
+    min-height: 10px;
+    -webkit-border-radius: 4px;
+    -webkit-user-select : none;
+    -moz-user-select    : none;
+    -ms-user-select     : none;
+    user-select         : none;
+    width: 500px;
+    /*overflow: hidden;*/
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.hide {
+    display: none;
+}
+
+.waiting {
+    height: 55px;
+    padding-left: 15px;
+    color : #0F8EEB;
+}
+.waiting progress {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.wiz_login {
+    padding: 10px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.wiz_login .container, .waiting {
+    margin-top: -10px;
+}
+
+.wiz_login .container .account_login_div {
+    text-align: center;
+}
+
+#div_error_validator {
+    color: red;
+    margin: 0 0 10px 47px;
+    text-align: left;
+}
+
+#user_id_area {
+    margin-bottom: 22px;
+    position:relative;
+}
+
+#password_tip_area {
+    position:relative;
+}
+
+#login_btn_area {
+    float:right;
+    margin-right:45px;
+    padding: 27px 0;
+}
+
+/*.wiz_login input, .note_title_div input ,.note_comment_div textarea {*/
+/*font-family: 'Microsoft Yahei', 'STHeiti', 'SimHei', 'SimSun';*/
+/*}*/
+
+.wiz_login input[type="password"], .wiz_login input[type="text"] {
+    border: 1px solid #eee;
+    padding: 8px 8px 8px 43px;
+    width: 390px;
+    height: 20px;
+    background-color: #f5f5f5;
+    box-shadow: inset 0 2px 10px #ddd;
+}
+
+.wiz_login input[type="password"]:focus, .wiz_login input[type="text"]:focus {
+    border: 1px solid #318dc7;
+    outline: none;
+}
+
+.wiz_login label {
+    display: block;
+    padding: 5px;
+}
+
+#user_id_tip {
+    position: absolute;
+    overflow: hidden;
+    padding: 19px;
+    left: 19px;
+    background: #359bdc url(../../images/email.png) no-repeat center;
+}
+
+#password_tip {
+    position: absolute;
+    overflow: hidden;
+    padding: 19px;
+    left: 19px;
+    background: #359bdc url(../../images/password.png) no-repeat center;;
+}
+
+#keep_password_tip {
+    color: #359bdc;
+    display:inline;
+}
+
+.wiz_login .keep_password_div {
+    padding: 29px 30px 29px 0;
+    float:right;
+}
+
+.wiz_clip_detail .container {
+    margin: 20px 5px 20px 5px;
+}
+
+.note_title_div, .note_category_div, .note_comment_div, .note_tag_div{
+    border: 1px solid #B1B1B1;
+    padding: 8px;
+    background-color: white;
+}
+.note_category_div {
+    position: relative;
+}
+.note_tag_div {
+    border-top: none;
+}
+.note_tag_div #tag-list {
+    margin: 0;
+    padding: 0;
+}
+.note_tag_div #tag-list li{
+    float: left;
+    margin-right: 15px;
+}
+.note_tag_div #tag-info {
+    width: 350px;
+}
+.note_title_div input, .note_category_div label.category_info, .note_comment_div textarea {
+    border: 0;
+    padding: 0;
+    width: 430px;
+}
+.note_category_div label.category_info:hover {
+    cursor: pointer;
+}
+
+.note_comment_div textarea {
+    vertical-align: top;
+    resize: none;
+    max-height: 80px;
+    width: 100%;
+}
+.radius-top {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    border-bottom: 0;
+}
+
+.radius-bottom {
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-top: 0;
+}
+.note_title_div label, .note_category_div label {
+    text-align: right;
+    width: 20%;
+}
+
+.category_loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    border: 0;
+    margin: 0 0 0 -8px;
+}
+
+.submit-group {
+    float: right;
+    height: 55px;
+    padding-top: 15px;
+    position: relative;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    padding: 3px 8px;
+    color: #555;
+    border: 1px solid #b8bcc4;
+    background-color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #359bdc;
+    border-color: #2b85c3;
+}
+
+.submit-button {
+    z-index: 201;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 115px;
+    height: 30px;
+    background: transparent;
+    border: 0;
+    border-right: 1px solid #2b85c3;
+    cursor: pointer;
+}
+
+.striped {
+    background-color: #F0F0F0;
+}
+
+.ztree-container {
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 5px;
+    height: 175px;
+    max-height: 0px;
+    opacity: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    border-top: 1px solid #B1B1B1;
+    position: relative;
+    transition: 300ms all ease-in-out;
+}
+.ztree-container.active {
+    max-height: 10000px;
+    opacity: 1;
+    overflow: auto;
+}
+.ztree-container #refresh_category_btn {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #0F8EEB;
+    font-size: 12px;
+}
+.ztree-container .ztree {
+    padding: 0;
+}
+
+#comment-info {
+    height: 20px;
+    transition: 300ms height ease;
+}
+#comment-info.active,
+#comment-info:focus {
+    height: 60px;
+}
+
+.required_error {
+    color: rgb(255, 0, 0);
+}
+
+.header {
+    height: 50px;
+}
+
+.header_logo {
+    float: left;
+}
+.header-links {
+    float: right;
+    padding: 14px 20px 8px 8px;
+    color: #0F8EEB;
+}
+.header-links span:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #0F8EEB;
+}
+.header_logo {
+    margin-left: 8px;
+    margin-top: 5px;
+}
+.header_logo:hover {
+    cursor: pointer;
+}
+.native-checkd {
+    /*  width: 142px;
+        overflow: hidden;*/
+    padding: 15px 0;
+    float: left;
+}
+
+.save-type {
+    padding: 3px 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background : #fff url(../../images/select-dropdown.png) no-repeat 125px 6px;
+    width: 149px;
+}
+
+.save-type:hover {
+    background-color: #f5f5f5;
+}

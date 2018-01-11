@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/popup/popup.css" />
+    <link rel="stylesheet" href="scripts/lib/ngTagsInput/ng-tags-input.min.css"/>
+    <link rel="stylesheet" href="scripts/lib/nyaBsSelect/nya-bs-select.bootstrap.css" />
+    <link rel="stylesheet" href="scripts/lib/nyaBsSelect/nya-bs-select.css"/>
+    <link rel="stylesheet" href="styles/zTreeStyle/zTreeStyle.css" />
+</head>
+<body class="popup" id="popup" ng-app="wizWebClipper" ng-csp>
+
+    <!-- head begin -->
+    <div class="header">
+        <div class="header_logo">
+            <img alt="Wiz" src="images/logo.png"/>
+        </div>
+        <div id="header_user" class="header-links">
+            <div id="login_div">
+                <span id="header_username"></span>
+                <span class="sep"></span>
+                <span id="logout_control"></span>
+            </div>
+            <div id="loginoff_div" class="hide">
+                <span id="create_acount"></span>
+            </div>
+        </div>
+    </div>
+    <!-- head end -->
+
+    <!-- waiting begin-->
+    <div class="waiting" id="waiting">
+        <div id="waiting_div">
+            <br />
+            <label id="waiting-label"></label>
+            <br />
+            <progress indeterminate></progress>
+        </div>
+        <div class="required_error hide" id="errorpage_tip">
+            <br />
+            <label></label>
+        </div>
+    </div>
+    <!-- waiting end -->
+
+    <div class="wiz_login hide" id="wiz_login">
+        <div class="container">
+            <div class="account_login_div clearfix">
+                <div id="div_error_validator"></div>
+                <div id="user_id_area">
+                    <label id="user_id_tip" for="userId"></label>
+                    <input type="text" name="userId" size="30" value="" id="userId">
+                </div>
+                <div id="password_tip_area">
+                    <label id="password_tip" for="password"> </label>
+                    <input type="password" name="password" size="30" value="" id="password">
+                </div>
+                <div id="login_btn_area">
+                    <button id="login_button" name="login_button" class="btn btn-primary" style="padding: 0 10px"></button>
+                    <div style="vertical-align: baseline; height:24px; padding-top:1px; display:inline;"></div>
+                </div>
+                <div class="keep_password_div">
+                    <input type="checkbox" name="keep_password" id="keep_password" checked="checked">
+                    <label for="keep_password" id="keep_password_tip"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wiz_clip_detail hide" id="wiz_clip_detail" ng-controller="ClipperCtrl">
+        <div class="container">
+            <div action="#" class="note_info">
+                <div class="note_title_div radius-top">
+                    <label for="wiz_note_title" id="note_title_tip"></label>
+                    <span>
+                        <input type="text" id="wiz_note_title" ng-model="title"/>
+                    </span>
+                </div>
+                <div class="note_category_div">
+                    <label id="category_tip"> </label>
+                    <span>
+                        <label id="category_info" class="category_info"></label>
+                    </span>
+                    <div id="ztree_container" class="ztree-container first">
+                        <div id="ztree" class="ztree"></div>
+                        <a id="refresh_category_btn"></a>
+                    </div>
+                    <div id="category_loading" class="category_loading hide">
+                        <img src="styles/zTreeStyle/img/loading.gif"/></label>
+                    </div>
+                </div>
+
+                <div class="note_tag_div">
+                    <label id="tag-name" data-tag-name="{{tagsNameStr()}}">Tags</label>
+                    <tags-input ng-model="tags" min-length=1 replace-spaces-with-dashes="false">
+                        <auto-complete source="loadTags($query)"
+                                       min-length="0"
+                                       load-on-focus="true"
+                                       load-on-empty="false"
+                                       max-results-to-show="5"></auto-complete>
+                    </tags-input>
+                </div>
+
+                <div class="note_comment_div radius-bottom">
+                    <label for="comment-info" id="comment_tip"></label>
+                    <textarea rows="1" class="comment-info" id="comment-info"></textarea>
+                </div>
+            </div>
+            <div>
+                <!--<div class="native-checkd">-->
+                    <!--<ol id="save_type_sel" class="nya-bs-select" ng-model="saveType">-->
+                        <!--<li class="nya-bs-option" data-value="save_to_server">-->
+                            <!--<a id="save_to_server"></a>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</div>-->
+                <div class="submit-group">
+                    <button id="note_submit" class="submit-button"></button>
+                    <ol id="submit-type" class="nya-bs-select" ng-model="submitType">
+                        <li class="nya-bs-option" data-value="article">
+                            <a id="article"></a>
+                        </li>
+                        <li class="nya-bs-option" data-value="selection">
+                            <a id="selection"></a>
+                        </li>
+                        <li class="nya-bs-option" data-value="fullPage">
+                            <a id="fullPage"></a>
+                        </li>
+                        <li class="nya-bs-option" data-value="url">
+                            <a id="url"></a>
+                        </li>
+                    </ol>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/lib/angular/angular.min.js"></script>
+    <script src="scripts/lib/ngTagsInput/ng-tags-input.min.js"></script>
+    <script src="scripts/lib/nyaBsSelect/nya-bs-select.js"></script>
+
+
+    <script src="scripts/wiz/WizConstant.js"></script>
+    <script src="scripts/lib/jquery.min.js"></script>
+    <script src="scripts/lib/zTree/zTreeJs/jquery.ztree.core-3.5.min.js"></script>
+    <script src="scripts/wiz/WizObject.js"></script>
+    <script src="scripts/wiz/Browser.js"></script>
+    <script src="scripts/wiz/Cookie.js"></script>
+    <script src="scripts/lib/md5.js"></script>
+    <script src="scripts/popup/PopupView.js"></script>
+    <script src="scripts/popup/ZtreeController.js"></script>
+    <script src="scripts/popup/ClipPageControl.js"></script>
+    <script src="scripts/popup/LoginControl.js"></script>
+    <script src="scripts/popup/Popup.js"></script>
+    <script src="scripts/popup/app.js"></script>
+
+</body>
+</html>
