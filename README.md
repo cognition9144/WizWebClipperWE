@@ -11,7 +11,7 @@
 - 将 32x32 的图标添加到工具栏图标可用列表中
 - 更新了 Angular.js 和 jQuery.js
 
-若对代码有疑虑的，可在 GitHub 上查看与官方版代码的差异。
+若对代码有疑虑的，可在 GitHub 上[查看与官方版代码的差异](https://github.com/xcffl/WizWebClipperWE/commit/24eade62980940b8acd42489e99a1b498e1219f1)。
 
 本扩展系移植自为知笔记的 [为知笔记网页剪辑器](https://outgoing.prod.mozaws.net/v1/94ab1a96a93c91f35c1569d5c21614329a2da9a80ebb262637877d71707aa83e/https%3A//chrome.google.com/webstore/detail/wiznote-web-clipper/jfanfpmalehkemdiiebjljddhgojhfab)。扩展于页面上的图标系依照 GPLv3 自[WizQTClient](https://addons.mozilla.org/) 使用。
 **若有侵权则会删除**
