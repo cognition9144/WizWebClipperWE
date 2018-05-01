@@ -23,9 +23,9 @@ function Wiz_ContentPreview() {
             var li = document.createElement("li");
             var div = document.createElement("div");
             var img = document.createElement("img");
-            var message = document.createTextNode(" " + chrome.i18n.getMessage(nudgeImgs[i][1]));
+            var message = document.createTextNode(" " + browser.i18n.getMessage(nudgeImgs[i][1]));
             div.className = "keyIcon";
-            img.src = chrome.extension.getURL("images/nudge-icons/" + nudgeImgs[i][0]);
+            img.src = browser.extension.getURL("images/nudge-icons/" + nudgeImgs[i][0]);
             div.appendChild(img);
             li.appendChild(div);
             li.appendChild(message);

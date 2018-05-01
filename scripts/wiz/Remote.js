@@ -158,7 +158,7 @@ var Wiz = Wiz || {};
             clientType: CONST.API_COMMON.CLIENT_TYPE,
             clientVersion: CONST.API_COMMON.CLIENT_VERSION,
             apiVersion: CONST.API_COMMON.API_VERSION,
-            lang: chrome.i18n.getUILanguage()
+            lang: browser.i18n.getUILanguage()
         });
         return url;
     }

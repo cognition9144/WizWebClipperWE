@@ -45,7 +45,7 @@ function  PreviewController() {
             if (windows[i].tabs) {
                 for (j = 0; j < windows[i].tabs.length; j++) {
                     // We explicitly ignore chrome-specific URLs, as trying to access them throws errors.
-                    if (!windows[i].tabs[j].url.match(/^chrome.*:\/\//)) {
+                    if (!windows[i].tabs[j].url.match(/^browser.*:\/\//)) {
                         clear(windows[i].tabs[j].id);
                     }
                 }
@@ -56,7 +56,7 @@ function  PreviewController() {
       // Clears the preview for *all* open tabs in all open windows. Even ones that don't have a preview. Even ones that
       // might not have an 'Wiz' object. This isn't really ideal. It'd be better to call 'clear' for a specific tab.
     function clearAll() {
-        chrome.windows.getAll({populate: true}, clearAllWindows);
+        browser.windows.getAll({populate: true}, clearAllWindows);
     }
 
       // Public API:
@@ -105,7 +105,7 @@ function getNudgeOp(key, evt) {
     };
 
     if (keyMap[key]) {
-        if (evt && evt.altKey === true) { // 18         
+        if (evt && evt.altKey === true) { // 18
             // wiz_contentPreview.nudgePreview(keyMap[key+KEY_ALT]);
             returnValue = keyMap[key + KEY_ALT];
         } else if (evt && evt.ctrlKey === true) {// 17

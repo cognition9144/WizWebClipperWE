@@ -320,7 +320,7 @@ function Wiz_PageInfo() {
     // If we can respond to this request, then we're ready. Otherwise, the page hasn't loaded this script yet.
     // function readyRequestHandler() {
     //  console.log('readyRequestHandler');
-    //  chrome.extension.connect({
+    //  browser.runtime.connect({
     //      name : "popup_pageInfoReadyToGo"
     //  }).postMessage({url : document.location.href});
     // }
@@ -345,4 +345,3 @@ function Wiz_PageInfo() {
 Object.preventExtensions(Wiz_PageInfo);
 
 var wiz_pageInfo = new Wiz_PageInfo();
-

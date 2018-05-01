@@ -538,7 +538,7 @@ var ClientClipper = function () {
         }
         info.url = document.location.href;
         setTimeout(function(){
-            chrome.extension.connect({
+            browser.runtime.connect({
                 name : "saveDocument"
             }).postMessage(info);
         }, 300);

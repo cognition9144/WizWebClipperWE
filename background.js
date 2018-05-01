@@ -113,10 +113,10 @@ var Wiz_Context = {};
             coefficient = info.params.length / 102400;
 
             //显示正在剪辑
-            chrome.notifications.create(docGuid + '_clipping', {
+            browser.notifications.create(docGuid + '_clipping', {
                 type: "basic",
                 title: info.title,
-                message: chrome.i18n.getMessage('clipResult_clipping'),
+                message: browser.i18n.getMessage('clipResult_clipping'),
                 iconUrl: "images/scissors.png"
             }, function (notificationId) {
             });
@@ -295,23 +295,23 @@ var Wiz_Context = {};
                 var status = +data.status;
                 if (status >= 0) {
                     // 剪辑完成
-//                console.log('docGuid:' + docGuid + ' title:' + title + ' message' + chrome.i18n.getMessage('clipResult_success'));
+//                console.log('docGuid:' + docGuid + ' title:' + title + ' message' + browser.i18n.getMessage('clipResult_success'));
                     //清除正在剪辑任务
                     if (status === 0) {
-                        message = chrome.i18n.getMessage('clipResult_success');
+                        message = browser.i18n.getMessage('clipResult_success');
                     } else if (status === 101) {
-                        message = chrome.i18n.getMessage('save_image_to_server_fail');
+                        message = browser.i18n.getMessage('save_image_to_server_fail');
                     }
-                    chrome.notifications.clear(docGuid + '_clipping', function () {
+                    browser.notifications.clear(docGuid + '_clipping', function () {
                     });
-                    chrome.notifications.create(docGuid + '_success', {
-                        type: "basic",
-                        title: title,
-                        message: message,
-                        iconUrl: "images/check.png",
-                        buttons: [{
-                            title: chrome.i18n.getMessage('clipResult_webclient'),
-                            iconUrl: 'images/wiz-clipper-16.png'
+                    browser.notifications.create(docGuid + '_success', {
+                        "type": "basic",
+                        "title": title,
+                        "message": message,
+                        "iconUrl": "images/check.png",
+                        "buttons": [{
+                            "title": browser.i18n.getMessage('clipResult_webclient'),
+                            "iconUrl": 'images/wiz-clipper-16.png'
                         }]
                     }, function (notificationId) {
                     });
@@ -323,12 +323,12 @@ var Wiz_Context = {};
                     }, Wiz_Context.queryTimeArray[Wiz_Context.queryTime] * 1000);
                 } else {
                     // 剪辑失败
-                    chrome.notifications.clear(docGuid + '_clipping', function () {
+                    browser.notifications.clear(docGuid + '_clipping', function () {
                     });
-                    chrome.notifications.create(Wiz_Context.kbGuid + '_error', {
+                    browser.notifications.create(Wiz_Context.kbGuid + '_error', {
                         type: "basic",
                         title: title,
-                        message: chrome.i18n.getMessage('clipResult_error'),
+                        message: browser.i18n.getMessage('clipResult_error'),
                         iconUrl: "images/warning.png"
                     }, function (notificationId) {
                     });
@@ -466,7 +466,7 @@ var Wiz_Context = {};
         onPreviewCallback: function (option) {
             if (!option) {
                 //当前页面无法剪辑
-                chrome.extension.connect({
+                browser.runtime.connect({
                     'name': 'pagePreviewFailure'
                 });
             }
@@ -474,7 +474,7 @@ var Wiz_Context = {};
         onPreviewSubmitCallback: function (option) {
             //要等页面完全加载后，右键点击仍然无返回，提示无法剪辑
             if (!option && Wiz_Context.tab.status === 'complete') {
-                var pageClipFailure = chrome.i18n.getMessage('pageClipFailure');
+                var pageClipFailure = browser.i18n.getMessage('pageClipFailure');
                 alert(pageClipFailure);
             }
         },
@@ -488,12 +488,12 @@ var Wiz_Context = {};
             } else {
                 // 请求失败
                 setTimeout(function () {
-                    chrome.notifications.clear(docGuid + '_clipping', function () {
+                    browser.notifications.clear(docGuid + '_clipping', function () {
                     });
-                    chrome.notifications.create(docGuid + '_error', {
+                    browser.notifications.create(docGuid + '_error', {
                         type: "basic",
                         title: title,
-                        message: chrome.i18n.getMessage('clipResult_error'),
+                        message: browser.i18n.getMessage('clipResult_error'),
                         iconUrl: "images/warning.png"
                     }, function () {
                     });
@@ -522,7 +522,7 @@ var Wiz_Context = {};
      *获取当前页面的tab信息
      */
     function getCurTab(callback, params) {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        browser.tabs.query({active: true, currentWindow: true}, function (tabs) {
             Wiz_Context.tab = tabs[0];
             callback(tabs[0], params);
         });
@@ -548,16 +548,16 @@ var Wiz_Context = {};
         }, handler.onPreviewCallback);
     }
 
-    //var authenticationErrorMsg = chrome.i18n.getMessage('AuthenticationFailure');
+    //var authenticationErrorMsg = browser.i18n.getMessage('AuthenticationFailure');
 
     var onButtonClickedCallback = function (notificationId, buttonIndex) {
         var index = notificationId.indexOf('_success');
         if (index > -1) {
-            chrome.tabs.create({url: Wiz_Context.COOKIE.HOST + '?kb=' + Wiz_Context.kbGuid + '&dc=' + notificationId.substring(0, index)}, function () {
+            browser.tabs.create({url: Wiz_Context.COOKIE.HOST + '?kb=' + Wiz_Context.kbGuid + '&dc=' + notificationId.substring(0, index)}, function () {
             });
         }
     };
-    chrome.notifications.onButtonClicked.addListener(onButtonClickedCallback);
+    browser.notifications.onButtonClicked.addListener(onButtonClickedCallback);
 
     function wizSavePageContextMenuClick(info, tab) {
         var type = 'fullPage';
@@ -578,8 +578,8 @@ var Wiz_Context = {};
 
             // var notification = Notification.createNotification(
             //     'images/wiz-clipper-16.png',
-            //     chrome.i18n.getMessage('extName'),
-            //     chrome.i18n.getMessage("note_login")
+            //     browser.i18n.getMessage('extName'),
+            //     browser.i18n.getMessage("note_login")
             // );
             // notification.show();
             // setTimeout(function () {
@@ -589,10 +589,10 @@ var Wiz_Context = {};
     }
 
     function wiz_initContextMenus() {
-        var clipPageContext = chrome.i18n.getMessage('contextMenus_clipPage'),
+        var clipPageContext = browser.i18n.getMessage('contextMenus_clipPage'),
             allowableUrls = ['http://*/*', 'https://*/*'];
 
-        chrome.contextMenus.create({
+        browser.contextMenus.create({
             'title': clipPageContext,
             'contexts': ['all'],
             'documentUrlPatterns': allowableUrls,
@@ -602,7 +602,7 @@ var Wiz_Context = {};
 
 // 从api.wiz.cn获取openapi地址
     function getOpenApiUrl() {
-        chrome.storage.sync.get({
+        browser.storage.sync.get({
             protocol: 'https:'
         }, function (items) {
             CONST.Default.PROTOCOL = items.protocol;
@@ -626,7 +626,7 @@ var Wiz_Context = {};
         });
     }
 
-    chrome.extension.onConnect.addListener(handler.onConnectListener);
+    browser.runtime.onConnect.addListener(handler.onConnectListener);
     wiz_initContextMenus();
 
     // 初始化的时候获取一次
@@ -635,4 +635,3 @@ var Wiz_Context = {};
     }, 300);
 
 })();
-

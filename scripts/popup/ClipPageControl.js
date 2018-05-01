@@ -63,7 +63,7 @@ function ClipPageControl() {
     }
 
     //监听截取信息事件
-    chrome.extension.onConnect.addListener(messageListener);
+    browser.runtime.onConnect.addListener(messageListener);
 
     function messageListener(port) {
         var name = port.name;
@@ -81,19 +81,19 @@ function ClipPageControl() {
     }
 
     function requestPreview() {
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
                 name: 'setPreviewByClipPage'
             });
         port.postMessage('article');
     }
 
     function exacutePreviewFailure() {
-        chrome.windows.getCurrent(function (win) {
-            chrome.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
+        browser.windows.getCurrent(function (win) {
+            browser.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
                 var tab = tabs[0];
                 if (tab && tab.status === 'complete') {
                     //页面资源已经加载完成，未有preview返回，则提示无法剪辑
-                    var pageClipFailure = chrome.i18n.getMessage('pageClipFailure');
+                    var pageClipFailure = browser.i18n.getMessage('pageClipFailure');
                     PopupView.showClipFailure(pageClipFailure);
                 } else {
                     //页面加载中，继续执行请求
@@ -120,7 +120,7 @@ function ClipPageControl() {
     function changeSubmitTypehandler(evt) {
         var cmd = angular.element(document.getElementById('submit-type')).scope().submitType,
             portName = 'setPreviewByClipPage',
-            port = chrome.runtime.connect({
+            port = browser.runtime.connect({
                 name: portName
             });
 
@@ -162,8 +162,8 @@ function ClipPageControl() {
      */
     function requestPageStatus() {
 //        console.log('requestPageStatus');
-        chrome.windows.getCurrent(function (win) {
-            chrome.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
+        browser.windows.getCurrent(function (win) {
+            browser.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
                 Wiz.Browser.sendRequest(tabs[0].id, {
                     name: 'getInfo'
                 }, function (params) {
@@ -186,13 +186,13 @@ function ClipPageControl() {
 
 
     function initLogoutLink() {
-        var logoutText = chrome.i18n.getMessage('logout');
+        var logoutText = browser.i18n.getMessage('logout');
         $('#header_user').show();
         $('#logout_control').html(logoutText).bind('click', cmdLogout);
     }
 
     function cmdLogout() {
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
             name: 'logout'
         });
         port.onMessage.addListener(function(res) {
@@ -204,8 +204,8 @@ function ClipPageControl() {
      *加载标题
      */
     function requestTitle() {
-        chrome.windows.getCurrent(function (win) {
-            chrome.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
+        browser.windows.getCurrent(function (win) {
+            browser.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
                 var title = tabs[0].title;
                 if (!title) {
                     return;
@@ -249,7 +249,7 @@ function ClipPageControl() {
     //    if (visible) {
     //        PopupView.hideCategoryLoading();
     //    } else {
-    //        var categoryLoadingMsg = chrome.i18n.getMessage('category_loading');
+    //        var categoryLoadingMsg = browser.i18n.getMessage('category_loading');
     //        PopupView.showCategoryLoading(categoryLoadingMsg);
     //    }
     //}
@@ -282,7 +282,7 @@ function ClipPageControl() {
      * 加载 Tag 信息
      */
     function requestTag() {
-        chrome.runtime.connect({
+        browser.runtime.connect({
             name: 'requestTag'
         });
     }
@@ -293,7 +293,7 @@ function ClipPageControl() {
     function requestCategory() {
         PopupView.showCategoryLoading();
         //本地目录信息错误，向后台请求目录信息
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
             name: 'requestCategory'
         });
         port.onMessage.addListener(requestCategoryHandler);
@@ -301,7 +301,7 @@ function ClipPageControl() {
     function requestCategoryForce() {
         PopupView.showCategoryLoading();
         //本地目录信息错误，向后台请求目录信息
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
             name: 'requestCategoryForce'
         });
         port.onMessage.addListener(requestCategoryHandler);
@@ -336,7 +336,7 @@ function ClipPageControl() {
         var info = {
             direction: opCmd
         };
-        chrome.runtime.connect({
+        browser.runtime.connect({
             name: 'onKeyDownAtPreview'
         }).postMessage(info);
     }
@@ -398,8 +398,8 @@ function ClipPageControl() {
                 userid : user ? user.id : '',
                 tag: tag
             };
-        chrome.windows.getCurrent(function (win) {
-            chrome.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
+        browser.windows.getCurrent(function (win) {
+            browser.tabs.query({ active: true,  windowId: win.id }, function (tabs) {
                 Wiz.Browser.sendRequest(tabs[0].id, {
                     name: 'preview',
                     op: 'submit',
@@ -417,7 +417,7 @@ function ClipPageControl() {
         var userId = user ? user.name : '';
         $('#login_div').find('.sep').html('|');
 
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
             name: 'getWebClientUrl'
         });
         port.onMessage.addListener(function(url) {

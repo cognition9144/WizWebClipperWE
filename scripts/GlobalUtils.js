@@ -128,13 +128,13 @@ var GlobalUtils = {};
                 case "submit":
                 case "search":
                     if (element.attributes.placeholder) {
-                        localizedMessage = chrome.i18n.getMessage(element.attributes.placeholder.value);
+                        localizedMessage = browser.i18n.getMessage(element.attributes.placeholder.value);
                         if (localizedMessage) {
                             element.placeholder = localizedMessage;
                         }
                     }
                     if (element.attributes.message) {
-                        localizedMessage = chrome.i18n.getMessage(element.attributes.message.value);
+                        localizedMessage = browser.i18n.getMessage(element.attributes.message.value);
                         if (localizedMessage) {
                             element.value = localizedMessage;
                         }
@@ -151,14 +151,14 @@ var GlobalUtils = {};
         }
 
         else if (element.attributes.message) {
-            localizedMessage = chrome.i18n.getMessage(element.attributes.message.value);
+            localizedMessage = browser.i18n.getMessage(element.attributes.message.value);
             if (localizedMessage) {
                 element.innerHTML = localizedMessage;
             }
         }
 
         if (element.title) {
-            var localizedTitle = chrome.i18n.getMessage(element.title);
+            var localizedTitle = browser.i18n.getMessage(element.title);
             if (localizedTitle) {
                 element.title = localizedTitle;
             }

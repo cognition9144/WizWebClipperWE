@@ -17,7 +17,7 @@ function LoginControl() {
     });
 
     function login(loginParam) {
-        var port = chrome.extension.connect({
+        var port = browser.runtime.connect({
             name : 'login'
         });
         port.onMessage.addListener(function(res) {
@@ -28,7 +28,7 @@ function LoginControl() {
 
             } else {
                 if (!!code) {
-                    msg = chrome.i18n.getMessage('err_' + code);
+                    msg = browser.i18n.getMessage('err_' + code);
                 }
                 if (!msg) {
                     msg = res;
@@ -40,7 +40,7 @@ function LoginControl() {
     }
 
     function doLogin() {
-        var loginingMsg = chrome.i18n.getMessage('logining');
+        var loginingMsg = browser.i18n.getMessage('logining');
         PopupView.showWaiting(loginingMsg);
 
         var loginParam = {
@@ -65,7 +65,7 @@ function LoginControl() {
         var email = userId.val();
         var valid = verifyEmail(email);
         if (!valid) {
-            errValidator.html(chrome.i18n.getMessage('userid_error')).show(100);
+            errValidator.html(browser.i18n.getMessage('userid_error')).show(100);
         }
         return valid;
 
@@ -80,7 +80,7 @@ function LoginControl() {
         errValidator.html('');
         var passwordVal = password.val();
         if (passwordVal.trim().length < 1) {
-            errValidator.html(chrome.i18n.getMessage('password_error')).show(100);
+            errValidator.html(browser.i18n.getMessage('password_error')).show(100);
             return false;
         }
         return true;
@@ -88,11 +88,11 @@ function LoginControl() {
     }
 
     function initCreateAccountLink() {
-        var port = chrome.runtime.connect({
+        var port = browser.runtime.connect({
             name: 'getRegisterUrl'
         });
         port.onMessage.addListener(function(url) {
-            $('#create_acount').html(chrome.i18n.getMessage('create_account_link')).bind('click', function(evt) {
+            $('#create_acount').html(browser.i18n.getMessage('create_account_link')).bind('click', function(evt) {
                 window.open(url);
             });
         });
