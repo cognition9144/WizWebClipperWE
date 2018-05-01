@@ -2,7 +2,7 @@ var app = angular.module('wizWebClipper', ['ngTagsInput', 'nya.bootstrap.select'
 
 var CONST = Wiz.Constant;
 
-$('tags-input').attr('placeholder', browser.i18n.getMessage('tag_input'));
+$('tags-input').attr('placeholder', chrome.i18n.getMessage('tag_input'));
 
 app.controller('ClipperCtrl', function($scope) {
     //tags

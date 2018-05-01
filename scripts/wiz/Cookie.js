@@ -12,10 +12,10 @@ Wiz.Cookie = {
         if (!!expireSecond) {
             param.expirationDate = new Date().getTime() / 1000 + expireSecond;
         }
-        browser.cookies.set(param, function(cookie) {});
+        chrome.cookies.set(param, function(cookie) {});
     },
     getCookies: function(url, key, callback, isAutoDelay, params) {
-        browser.cookies.get({
+        chrome.cookies.get({
             url : url,
             name : key
         }, function(cookies) {
@@ -31,7 +31,7 @@ Wiz.Cookie = {
         });
     },
     removeCookies: function(url, key, callback) {
-        browser.cookies.remove({
+        chrome.cookies.remove({
             url : url,
             name : key
         }, callback);

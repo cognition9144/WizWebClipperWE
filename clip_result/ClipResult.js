@@ -30,7 +30,7 @@ function bindErrorAction(info) {
 
 function retryButtonHandler(info) {
     //console.log('Retry Save');
-    chrome.runtime.connect({'name' : 'retryClip'}).postMessage(info);
+    chrome.extension.connect({'name' : 'retryClip'}).postMessage(info);
     $(notificationDetails).hide();
     $(errorActions).hide();
 }

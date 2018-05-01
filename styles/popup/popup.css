@@ -1,5 +1,5 @@
 html, body, input, label, select, option, textarea, button, fieldset, legend {
-    font-family: "Microsoft Yahei", "微软雅黑", "Noto Sans SC", "Noto Sans CJK SC", "Helvetica", "SimHei", "SimSun", sans-serif;
+    font-family: "Microsoft Yahei", "微软雅黑", "Helvetica", "SimHei", "SimSun", sans-serif;
     font-size: 14px;
 }
 
@@ -11,7 +11,7 @@ input, textarea, select, button {
     text-indent: 0;
     text-shadow: none;
     display: inline-block;
-    text-align: match-parent;
+    text-align: -webkit-auto;
 }
 
 /*隐藏聚焦时显示的黄色边框*/

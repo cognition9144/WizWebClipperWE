@@ -1,8 +1,8 @@
-//// 将选项保存在 browser.storage 中。
+//// 将选项保存在 chrome.storage 中。
 //function save_options() {
 //    var color = document.getElementById('color').value;
 //    var likesColor = document.getElementById('like').checked;
-//    browser.storage.sync.set({
+//    chrome.storage.sync.set({
 //        favoriteColor: color,
 //        likesColor: likesColor
 //    }, function() {
@@ -15,10 +15,10 @@
 //    });
 //}
 //
-//// 从保存在 browser.storage 中的首选项恢复选择框和复选框状态。
+//// 从保存在 chrome.storage 中的首选项恢复选择框和复选框状态。
 //function restore_options() {
 //    // 使用默认值 color = 'red' 和 likesColor = true 。
-//    browser.storage.sync.get({
+//    chrome.storage.sync.get({
 //        favoriteColor: 'red',
 //        likesColor: true
 //    }, function(items) {
@@ -40,20 +40,20 @@ $(function () {
     };
 
     function localize() {
-        $('head title').html(browser.i18n.getMessage('options_title'));
-        $('#options-title').html(browser.i18n.getMessage('WizNote'));
+        $('head title').html(chrome.i18n.getMessage('options_title'));
+        $('#options-title').html(chrome.i18n.getMessage('WizNote'));
         $('.options-name').each(function() {
-            $(this).html(browser.i18n.getMessage('options'));
+            $(this).html(chrome.i18n.getMessage('options'));
         });
         $('.options-about').each(function() {
-            $(this).html(browser.i18n.getMessage('about'));
+            $(this).html(chrome.i18n.getMessage('about'));
         });
-        $('#options-protocol-title').html(browser.i18n.getMessage('protocol'));
-        $('#options-protocol-tip').html(browser.i18n.getMessage('protocol_tip'));
+        $('#options-protocol-title').html(chrome.i18n.getMessage('protocol'));
+        $('#options-protocol-tip').html(chrome.i18n.getMessage('protocol_tip'));
     }
 
     function restoreOptions(options) {
-        browser.storage.sync.get(options, function(items) {
+        chrome.storage.sync.get(options, function(items) {
             var isHttps = items.protocol === 'https:';
             optionsHttpsObj[0].checked = isHttps;
             optionsHttpObj[0].checked = !isHttps;
@@ -62,10 +62,10 @@ $(function () {
 
     function onChangeProtocol() {
         var protocol = optionsHttpsObj[0].checked ? 'https:' : 'http:';
-        browser.storage.sync.set({
+        chrome.storage.sync.set({
             protocol: protocol
         }, function() {
-            browser.runtime.connect({
+            chrome.runtime.connect({
                 name: 'updateProtocol'
             });
         });

@@ -4,7 +4,7 @@
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
 .ng-cloak, .x-ng-cloak,
-.ng-hide:not(.ng-hide-animate) {
+.ng-hide {
   display: none !important;
 }
 
@@ -12,10 +12,7 @@ ng\:form {
   display: block;
 }
 
-.ng-animate-shim {
-  visibility:hidden;
-}
-
-.ng-anchor {
-  position:absolute;
+.ng-animate-block-transitions {
+  transition:0s all!important;
+  -webkit-transition:0s all!important;
 }
